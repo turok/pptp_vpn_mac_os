@@ -17,7 +17,7 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var connectButton: NSMenuItem!
     
     override func awakeFromNib() {
-        let icon = NSImage(named: "statusIcon")
+        let icon = NSImage(named: "StatusDisconnectIcon")
         icon?.isTemplate = true // best for dark mode
         statusItem.button?.image = icon
         statusItem.menu = statusMenu
@@ -38,6 +38,9 @@ class StatusMenuController: NSObject {
             disconnect()
         }
         connectButton.title = isRunning ? "Disconnect" : "Connect"
+        let icon = isRunning ? NSImage(named: "StatusConnectIcon") : NSImage(named: "StatusDisconnectIcon")
+        icon?.isTemplate = true
+        statusItem.button?.image = icon
     }
 
     private func disconnect(waitExecute:Bool=false) {
@@ -56,13 +59,31 @@ class StatusMenuController: NSObject {
             return
         }
         let configPath = Bundle.main.path(forResource: "vpn", ofType:"config")
-        runScript(scriptToExecute: path + " " + configPath!)
+        let newConfigPath = prepareConfig(configPath: configPath!)
+        runScript(scriptToExecute: path + " " + newConfigPath!)
         isRunning = true
+    }
+
+    private func prepareConfig(configPath: String) -> String? {
+        let preferences = Preferences()
+        let newVpnConfigPath = Bundle.main.path(forResource:"newVpn", ofType: "config")
+        do {
+            var vpnConfig = try String(contentsOfFile: configPath, encoding: String.Encoding.utf8)
+//            var vpnConfig = NSString.stringWithContentsOfFile(configPath) as String
+            vpnConfig = vpnConfig.replacingOccurrences(of: "$1", with: preferences.server())
+            vpnConfig = vpnConfig.replacingOccurrences(of: "$2", with: preferences.login())
+            vpnConfig = vpnConfig.replacingOccurrences(of: "$3", with: preferences.password())
+            try vpnConfig.write(toFile: newVpnConfigPath!, atomically: false,  encoding: .utf8)
+        } catch {
+        }
+        return newVpnConfigPath
     }
 
     private func runScript(scriptToExecute:String, waitExecute:Bool=false) {
         let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
         taskQueue.async {
+            
+            
             var arguments:[String] = []
             arguments.append("-c")
             arguments.append("osascript -e \"do shell script \\\"" + scriptToExecute + "\\\" with administrator privileges\"")

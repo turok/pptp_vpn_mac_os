@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PreferencesViewController.swift
 //  vpn
 //
 //  Created by Anton Turko on 03/01/2019.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class PreferencesViewController: NSViewController {
     @IBOutlet weak var serverAddress: NSTextField!
     @IBOutlet weak var login: NSTextField!
     @IBOutlet weak var password: NSTextField!
@@ -16,6 +16,10 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSApp.activate(ignoringOtherApps: true)
+        let preferences = Preferences()
+        serverAddress.stringValue = preferences.server()
+        login.stringValue = preferences.login()
+        password.stringValue = preferences.password()
         // Do any additional setup after loading the view.
     }
 
@@ -25,8 +29,10 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func connectAction(_ sender: Any) {
-        
+    @IBAction func saveAction(_ sender: Any) {
+        let preferences = Preferences()
+        preferences.save(server: serverAddress.stringValue, login: login.stringValue, password: password.stringValue)
+        self.view.window?.close()
     }
     
 }

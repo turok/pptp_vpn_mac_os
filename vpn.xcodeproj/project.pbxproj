@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		721A984821DE6533001BC653 /* vpn.config in Resources */ = {isa = PBXBuildFile; fileRef = 721A984721DE6533001BC653 /* vpn.config */; };
+		6998F13574429E3C8C71A2C1 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6998F70BF1590958A6EF32B6 /* Preferences.swift */; };
+		6998F60A0403092CA94A7FE5 /* vpn.config in Resources */ = {isa = PBXBuildFile; fileRef = 6998F3AE353F1948E09AC027 /* vpn.config */; };
+		6998F7193361714ED6173401 /* newVpn.config in Resources */ = {isa = PBXBuildFile; fileRef = 6998F04231FF5EDCA5A9370F /* newVpn.config */; };
 		721A984A21DE696A001BC653 /* RunScript.command in Resources */ = {isa = PBXBuildFile; fileRef = 721A984921DE696A001BC653 /* RunScript.command */; };
 		72DD953C21DE067C0057B1D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DD953B21DE067C0057B1D1 /* AppDelegate.swift */; };
-		72DD953E21DE067C0057B1D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DD953D21DE067C0057B1D1 /* ViewController.swift */; };
+		72DD953E21DE067C0057B1D1 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DD953D21DE067C0057B1D1 /* PreferencesViewController.swift */; };
 		72DD954021DE067F0057B1D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72DD953F21DE067F0057B1D1 /* Assets.xcassets */; };
 		72DD954321DE067F0057B1D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72DD954121DE067F0057B1D1 /* Main.storyboard */; };
 		72DD956621DE45BB0057B1D1 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DD956521DE45BB0057B1D1 /* StatusMenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		721A984721DE6533001BC653 /* vpn.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vpn.config; path = ../../../../vpn.config; sourceTree = "<group>"; };
+		6998F04231FF5EDCA5A9370F /* newVpn.config */ = {isa = PBXFileReference; lastKnownFileType = file.config; path = newVpn.config; sourceTree = "<group>"; };
+		6998F3AE353F1948E09AC027 /* vpn.config */ = {isa = PBXFileReference; lastKnownFileType = file.config; path = vpn.config; sourceTree = "<group>"; };
+		6998F70BF1590958A6EF32B6 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		721A984921DE696A001BC653 /* RunScript.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = RunScript.command; sourceTree = "<group>"; };
 		72DD953821DE067C0057B1D1 /* vpn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vpn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72DD953B21DE067C0057B1D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		72DD953D21DE067C0057B1D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		72DD953D21DE067C0057B1D1 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		72DD953F21DE067F0057B1D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72DD954221DE067F0057B1D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		72DD954421DE067F0057B1D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,15 +63,17 @@
 		72DD953A21DE067C0057B1D1 /* vpn */ = {
 			isa = PBXGroup;
 			children = (
-				721A984721DE6533001BC653 /* vpn.config */,
 				72DD953B21DE067C0057B1D1 /* AppDelegate.swift */,
-				72DD953D21DE067C0057B1D1 /* ViewController.swift */,
+				72DD953D21DE067C0057B1D1 /* PreferencesViewController.swift */,
 				72DD956521DE45BB0057B1D1 /* StatusMenuController.swift */,
 				721A984921DE696A001BC653 /* RunScript.command */,
 				72DD953F21DE067F0057B1D1 /* Assets.xcassets */,
 				72DD954121DE067F0057B1D1 /* Main.storyboard */,
 				72DD954421DE067F0057B1D1 /* Info.plist */,
 				72DD954521DE067F0057B1D1 /* vpn.entitlements */,
+				6998F70BF1590958A6EF32B6 /* Preferences.swift */,
+				6998F04231FF5EDCA5A9370F /* newVpn.config */,
+				6998F3AE353F1948E09AC027 /* vpn.config */,
 			);
 			path = vpn;
 			sourceTree = "<group>";
@@ -130,10 +136,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				721A984821DE6533001BC653 /* vpn.config in Resources */,
 				72DD954021DE067F0057B1D1 /* Assets.xcassets in Resources */,
 				72DD954321DE067F0057B1D1 /* Main.storyboard in Resources */,
 				721A984A21DE696A001BC653 /* RunScript.command in Resources */,
+				6998F7193361714ED6173401 /* newVpn.config in Resources */,
+				6998F60A0403092CA94A7FE5 /* vpn.config in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,8 +152,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				72DD956621DE45BB0057B1D1 /* StatusMenuController.swift in Sources */,
-				72DD953E21DE067C0057B1D1 /* ViewController.swift in Sources */,
+				72DD953E21DE067C0057B1D1 /* PreferencesViewController.swift in Sources */,
 				72DD953C21DE067C0057B1D1 /* AppDelegate.swift in Sources */,
+				6998F13574429E3C8C71A2C1 /* Preferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
